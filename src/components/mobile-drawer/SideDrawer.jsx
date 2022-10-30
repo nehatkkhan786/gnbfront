@@ -1,0 +1,103 @@
+import { Box, Divider, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Typography } from '@mui/material'
+
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
+
+import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
+import Diversity3RoundedIcon from '@mui/icons-material/Diversity3Rounded';
+import ProductionQuantityLimitsRoundedIcon from '@mui/icons-material/ProductionQuantityLimitsRounded';
+import ReceiptLongRoundedIcon from '@mui/icons-material/ReceiptLongRounded';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
+
+
+const SideDrawer = ({openDrawer, setOpenDrawer}) => {
+
+    const iOS =
+    typeof navigator !== "undefined" &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  return (
+    <>
+        <SwipeableDrawer
+        anchor='left'
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={()=>setOpenDrawer(false)}
+        onOpen = {()=>setOpenDrawer(true)}
+        >
+            
+            <Box sx={{width:250}}>
+                <Box sx={{display:'flex', justifyContent:'flex-end'}}>
+                   <IconButton onClick={() => setOpenDrawer(false)}>
+                    <CloseRoundedIcon/>
+                   </IconButton>
+                </Box>
+                <Box sx={{display:'flex', justifyContent:'center',mt:2}}>
+                    <Typography variant='title'>G N Brothers</Typography>
+                </Box>
+                <Divider/>
+
+                <Box sx={{mt:2, mb:1}}>
+                    <Typography variant='title' sx={{ml:2}}>Main</Typography>
+                </Box>
+
+                <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                    <ListItemButton>
+                        <ListItemIcon><DashboardRoundedIcon/></ListItemIcon>
+                        <ListItemText primary='Dashboard'/>
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                <ListItemButton>
+                    <ListItemIcon><ProductionQuantityLimitsRoundedIcon/></ListItemIcon>
+                    <ListItemText primary='Products'/>
+                </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                <ListItemButton>
+                    <ListItemIcon> <Diversity3RoundedIcon/> </ListItemIcon>
+                    <ListItemText primary='Clients'/>
+                </ListItemButton>
+            </ListItem>
+
+            <Box sx={{mt:2, mb:1}}>
+                <Typography variant='title' sx={{ml:2}}>Secondary</Typography>
+           </Box>
+
+           <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                <ListItemButton>
+                    <ListItemIcon><InventoryRoundedIcon/></ListItemIcon>
+                    <ListItemText primary='Damage Orders'/>
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                <ListItemButton>
+                    <ListItemIcon><ReceiptLongRoundedIcon/></ListItemIcon>
+                    <ListItemText primary='Transaction'/>
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                <ListItemButton>
+                    <ListItemIcon><AddRoundedIcon/></ListItemIcon>
+                    <ListItemText primary='Add Product'/>
+                </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding sx={{':hover':{bgcolor:'red'}}}>
+                <ListItemButton>
+                    <ListItemIcon><BorderColorRoundedIcon/></ListItemIcon>
+                    <ListItemText primary='Create Damage'/>
+                </ListItemButton>
+            </ListItem>
+            </Box>
+
+        </SwipeableDrawer>
+    </>
+  )
+}
+
+export default SideDrawer
